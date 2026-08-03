@@ -1,5 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
+using StudentManagement.API.Interfaces;
+using StudentManagement.API.Repositories;
+using StudentManagement.API.Services;
 using StudentManagementSystem.Data;
 
 namespace StudentManagement.API
@@ -16,6 +19,8 @@ namespace StudentManagement.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<StudentService>();
+            builder.Services.AddScoped<IStudentRepository, StudentRepository>();
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
