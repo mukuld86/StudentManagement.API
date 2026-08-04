@@ -12,9 +12,21 @@ namespace StudentManagement.API.Services
             _repository = repository;
         }
 
-        public List<Student> GetStudents()
+        public async Task<List<Student>> GetStudentsAsync()
         {
-            return _repository.GetAll();
+            return await _repository.GetAllAsync();
+        }
+        public async Task<Student?> GetStudentByRegistrationNumberAsync(int registrationNumber)
+        {
+            return await _repository.GetByRegistrationNumberAsync(registrationNumber);
+        }
+        public void AddStudent(Student student)
+        {
+            _repository.Add(student);
+        }
+        public async Task<bool> UpdateStudentAsync(Student student)
+        {
+            return await _repository.UpdateAsync(student);
         }
     }
 }
