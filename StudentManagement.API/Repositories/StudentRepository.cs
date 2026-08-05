@@ -23,10 +23,10 @@ namespace StudentManagement.API.Repositories
         {
             return await _context.Students.FirstOrDefaultAsync(s => s.RegistrationNumber == registrationNumber);
         }
-        public void Add(Student student)
+        public async Task AddAsync(Student student)
         {
-            _context.Students.Add(student);
-            _context.SaveChanges();
+            await _context.Students.AddAsync(student);
+            await _context.SaveChangesAsync();
         }
         public async Task<bool> UpdateAsync(Student student)
         {

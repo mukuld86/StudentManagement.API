@@ -30,9 +30,9 @@ public class StudentController : ControllerBase
         return Ok(student);
     }
     [HttpPost]
-    public IActionResult CreateStudent(Student student)
+    public async Task<ActionResult<Student>> CreateStudent(Student student)
     {
-        _studentService.AddStudent(student);
+        await _studentService.AddStudentAsync(student);
         return CreatedAtAction(
             nameof(GetStudents),
             new { registrationNumber = student.RegistrationNumber },
