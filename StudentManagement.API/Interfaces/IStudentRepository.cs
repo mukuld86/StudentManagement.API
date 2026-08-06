@@ -8,5 +8,6 @@ namespace StudentManagement.API.Interfaces
         Task<Student?> GetByRegistrationNumberAsync(int registrationNumber);
         Task AddAsync(Student student);
         Task<bool> UpdateAsync(Student student);
+        Task<bool> DeleteAsync(int registrationNumber);
     }
 }

@@ -51,6 +51,15 @@ public class StudentController : ControllerBase
             return NotFound("Student not found");
         }
         return NoContent();
-
+    }
+    [HttpDelete("{registrationNumber}")]
+    public async Task<IActionResult> DeleteStudent(int registrationNumber)
+    {
+        bool deleted = await _studentService.DeleteStudentAsync(registrationNumber);
+        if (!deleted)
+        {
+            return NotFound("Student Not found!");
+        }
+        return Content("Student Deleted");
     }
 }

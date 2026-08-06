@@ -28,5 +28,9 @@ namespace StudentManagement.API.Services
         {
             return await _repository.UpdateAsync(student);
         }
+        public async Task<bool> DeleteStudentAsync(int registrationNumber)
+        {
+            return await _repository.DeleteAsync(registrationNumber);
+        }
     }
 }

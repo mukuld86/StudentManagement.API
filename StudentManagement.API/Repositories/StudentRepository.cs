@@ -45,5 +45,16 @@ namespace StudentManagement.API.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
+        public async Task<bool> DeleteAsync(int registrationNumber)
+        {
+            var student = await _context.Students.FirstOrDefaultAsync(s => s.RegistrationNumber == registrationNumber);
+            if (student == null)
+            {
+                return false;
+            }
+            _context.Students.Remove(student);
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }
