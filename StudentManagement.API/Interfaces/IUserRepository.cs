@@ -5,6 +5,6 @@ namespace StudentManagement.API.Interfaces
     public interface IUserRepository
     {
 
-        Task<User?> LoginAsync(string userName, string password);
+        Task<User?> SignInAsync(string userName, string password);
     }
 }

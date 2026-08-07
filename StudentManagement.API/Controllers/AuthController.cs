@@ -17,12 +17,15 @@ namespace StudentManagement.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(SignInRequest request)
         {
-            var user = await _userService.LoginAsync(request);
-            if(user == null)
+            var token = await _userService.SignInAsync(request);
+            if(token == null)
             {
                 return Unauthorized("Invalid username or password");
             }
-            return Ok("Login Successful");
+            return Ok(new
+            {
+                Token = token
+            });
         }
     }
 }

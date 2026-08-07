@@ -13,7 +13,7 @@ namespace StudentManagement.API.Repositories
         {
             _context = context;
         }
-        public async Task<User?> LoginAsync(string username, string password)
+        public async Task<User?> SignInAsync(string username, string password)
         {
             return await _context.Users
                 .FirstOrDefaultAsync(u =>

@@ -7,15 +7,22 @@ namespace StudentManagement.API.Services
     public class UserService
     {
         private readonly IUserRepository _repository;
-        public UserService(IUserRepository repository)
+        private readonly JwtService _jwtService;
+        public UserService(IUserRepository repository, JwtService jwtService)
         {
             _repository = repository;
+            _jwtService = jwtService;
         }
-        public async Task<User?> LoginAsync(SignInRequest request)
+        public async Task<string?> SignInAsync(SignInRequest request)
         {
-            return await _repository.LoginAsync(
+            var user = await _repository.SignInAsync(
                 request.UserName,
                 request.Password);
+            if (user == null)
+            {
+                return null;
+            }
+            return _jwtService.GenerateToken(user);
         }
     }
 }
