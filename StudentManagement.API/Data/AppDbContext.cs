@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudentManagement.API.Models;
 
-namespace StudentManagementSystem.Data
+namespace StudentManagement.API.Data
 {
     public class AppDbContext : DbContext
     {
@@ -10,5 +10,6 @@ namespace StudentManagementSystem.Data
 
         }
         public DbSet<Student> Students { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -1,8 +1,7 @@
-﻿//using StudentManagement.API.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using StudentManagement.API.Interfaces;
 using StudentManagement.API.Models;
-using StudentManagementSystem.Data;
+using StudentManagement.API.Data;
 
 namespace StudentManagement.API.Repositories
 {

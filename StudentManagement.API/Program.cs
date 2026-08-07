@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using StudentManagement.API.Interfaces;
 using StudentManagement.API.Repositories;
 using StudentManagement.API.Services;
-using StudentManagementSystem.Data;
+using StudentManagement.API.Data;
 
 namespace StudentManagement.API
 {
@@ -20,7 +20,9 @@ namespace StudentManagement.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<StudentService>();
+            builder.Services.AddScoped<UserService>();
             builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
