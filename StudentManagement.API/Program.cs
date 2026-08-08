@@ -18,6 +18,17 @@ namespace StudentManagement.API
             // Add services to the container.
 
             builder.Services.AddControllers();
+            // setting cors for frontend connection
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("ReactPolicy", policy =>
+                {
+                    policy
+                        .WithOrigins("http://localhost:5173")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             
@@ -76,6 +87,7 @@ namespace StudentManagement.API
                     };
                 });
 
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -86,9 +98,9 @@ namespace StudentManagement.API
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("ReactPolicy");
 
             app.UseAuthentication();
-
             app.UseAuthorization();
 
             app.MapControllers();
