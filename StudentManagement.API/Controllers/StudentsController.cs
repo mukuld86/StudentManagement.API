@@ -8,10 +8,10 @@ namespace StudentManagement.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class StudentController : ControllerBase
+public class StudentsController : ControllerBase
 {
     private readonly StudentService _studentService;
-    public StudentController(StudentService studentService)
+    public StudentsController(StudentService studentService)
     {
         _studentService = studentService;
     }
